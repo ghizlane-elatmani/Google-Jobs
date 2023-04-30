@@ -4,7 +4,7 @@ import { BiBriefcaseAlt } from "react-icons/bi";
 const Searchbar = () => {
   return (
     <div
-      className=" max-w-5xl m-auto p-4 md:py-7 rounded-lg"
+      className="max-w-5xl m-auto p-4 md:py-7 rounded-lg mb-5"
       style={{
         backgroundImage: `url(/images/backgroundImg.png)`,
         backgroundSize: "cover",
@@ -12,7 +12,7 @@ const Searchbar = () => {
         backgroundPosition: "center",
       }}
     >
-      <form className=" max-w-3xl m-auto p-2 flex gap-2 justify-between">
+      <form className="bg-blue-50 max-w-3xl m-auto p-1 flex gap-2 justify-between rounded-sm">
         <div className="bg-blue-50 w-full px-2 flex items-center gap-1 rounded-sm">
           <BiBriefcaseAlt />
           <input
