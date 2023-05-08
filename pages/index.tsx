@@ -1,18 +1,15 @@
-import { useState, Fragment } from "react";
+import { Fragment } from "react";
 import Head from "next/head";
+
+import { getJson } from "serpapi";
+
 import Navbar from "@/components/layout/Navbar";
 import Searchbar from "@/components/filter/Searchbar";
 import Layout from "@/components/layout/Layout";
 import Filter from "@/components/filter/Filter";
 import JobList from "@/components/jobs/JobList";
-import axios from "axios";
 
-export default function Home() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [location, setLocation] = useState("");
-
-  const baseUrl = `https://serpapi.com/search.json?engine=google_jobs&q=${searchQuery}&google_domain=google.com&api_key=${process.env.API_KEY}`;
-
+export default function Home({ jobs }: any) {
   return (
     <Fragment>
       <Head>
@@ -24,21 +21,24 @@ export default function Home() {
 
       <Layout>
         <Filter />
-        <JobList />
+        <JobList jobs={jobs} />
       </Layout>
     </Fragment>
   );
 }
 
 export async function getStaticProps() {
-  const startupURL = `https://serpapi.com/search.json?engine=google_jobs&q=Developer&google_domain=google.com&api_key=${process.env.API_KEY}`;
+  const params = {
+    q: "developer web",
+    hl: "en",
+    api_key: process.env.API_KEY,
+  };
 
-  const response = await axios.get(startupURL);
-  const data = await response.data;
+  const response = await getJson("google_jobs", params);
 
   return {
     props: {
-      jobs: data,
+      jobs: response,
     },
   };
 }

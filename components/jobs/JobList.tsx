@@ -1,7 +1,18 @@
 import React from "react";
+import JobItem from "./JobItem";
 
-const JobList = () => {
-  return <div className="md:flex-1">JobList</div>;
+const JobList = ({ jobs }: any) => {
+  console.log(jobs);
+
+  return (
+    <div className="md:flex-1">
+      <ul className="flex flex-col gap-3">
+        {jobs.jobs_results.map((job: any) => (
+          <JobItem key={job.job_id} job={job} />
+        ))}
+      </ul>
+    </div>
+  );
 };
 
 export default JobList;
