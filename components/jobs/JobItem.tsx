@@ -4,11 +4,15 @@ import { BsGlobeAmericas } from "react-icons/bs";
 const JobItem = ({ job }: any) => {
   return (
     <li className="flex gap-3 bg-white p-2 rounded-sm cursor-pointer text-blue-900 border border-gray-200 hover:border-gray-600">
-      <img
-        className="w-[70px] h-[70px] sm:w-[100px] sm:h-[100px] bg-slate-700"
-        src={job.thumbnail}
-        alt=""
-      />
+      {job.thumbnail ? (
+        <img
+          className="bg-transparent w-[70px] h-[70px] object-scale-down"
+          src={job.thumbnail}
+          alt="/"
+        />
+      ) : (
+        <div className="bg-transparent w-[70px] h-[70px]"></div>
+      )}
       <div className="flex-1 flex flex-col justify-between gap-2 sm:gap-0">
         <div>
           <p className="text-xs font-bold mb-2">{job.company_name}</p>

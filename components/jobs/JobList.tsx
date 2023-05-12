@@ -2,8 +2,6 @@ import React from "react";
 import JobItem from "./JobItem";
 
 const JobList = ({ jobs }: any) => {
-  console.log(jobs);
-
   return (
     <div className="md:flex-1">
       <ul className="flex flex-col gap-3">

@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Head from "next/head";
 
 import { getJson } from "serpapi";
@@ -9,7 +9,13 @@ import Layout from "@/components/layout/Layout";
 import Filter from "@/components/filter/Filter";
 import JobList from "@/components/jobs/JobList";
 
-export default function Home({ jobs }: any) {
+export default function Home({ jobStart }: any) {
+  const [jobs, setJobs] = useState(jobStart);
+  const [page, setPage] = useState(0);
+  const [query, setQuery] = useState("developer web");
+  const [location, setLocation] = useState("paris");
+  const [type, setType] = useState(" ");
+
   return (
     <Fragment>
       <Head>
@@ -17,10 +23,17 @@ export default function Home({ jobs }: any) {
       </Head>
 
       <Navbar />
-      <Searchbar />
+      <Searchbar query={query} setQuery={setQuery} />
 
       <Layout>
-        <Filter />
+        <Filter
+          query={query}
+          setQuery={setQuery}
+          location={location}
+          setLocation={setLocation}
+          type={type}
+          setType={setType}
+        />
         <JobList jobs={jobs} />
       </Layout>
     </Fragment>
@@ -38,7 +51,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      jobs: response,
+      jobStart: response,
     },
   };
 }
