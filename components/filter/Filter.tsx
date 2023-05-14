@@ -11,7 +11,7 @@ const Filter = ({
   setType,
 }: any) => {
   return (
-    <div className="md:w-[30%]">
+    <div className="md:w-[25%]">
       <FilterApplied
         query={query}
         setQuery={setQuery}
@@ -22,13 +22,13 @@ const Filter = ({
       />
 
       {/* ===== TYPE ===== */}
-      <div className="border border-neutral-400 border-b-1 border-t-0 border-r-0 border-l-0 pb-5 mb-5">
+      <div className="border border-neutral-300 border-b-1 border-t-0 border-r-0 border-l-0 pb-5 mb-5">
         <h2 className="text-neutral-500 font-bold mb-2 ">Type</h2>
 
         <div className="flex flex-wrap gap-2">
           <button
             onClick={() => setType(" ")}
-            className={`border border-blue-500 py-1 px-2 rounded-sm cursor-pointer flex items-center gap-2 ${
+            className={`border border-blue-500 py-1 px-2 rounded-sm text-sm cursor-pointer flex items-center gap-2 ${
               type === " "
                 ? "bg-blue-500 text-white"
                 : "text-blue-500 bg-transparent"
@@ -39,7 +39,7 @@ const Filter = ({
 
           <button
             onClick={() => setType("full time")}
-            className={`border border-blue-500 py-1 px-2 rounded-sm cursor-pointer flex items-center gap-2 ${
+            className={`border border-blue-500 py-1 px-2 text-sm rounded-sm cursor-pointer flex items-center gap-2 ${
               type === "full time"
                 ? "text-white bg-blue-500"
                 : "text-blue-500 bg-transparent "
@@ -50,7 +50,7 @@ const Filter = ({
 
           <button
             onClick={() => setType("part time")}
-            className={`border border-blue-500 py-1 px-2 rounded-sm cursor-pointer flex items-center gap-2 ${
+            className={`border border-blue-500 py-1 px-2 text-sm rounded-sm cursor-pointer flex items-center gap-2 ${
               type === "part time"
                 ? "text-white bg-blue-500"
                 : "text-blue-500 bg-transparent"
@@ -81,14 +81,14 @@ const Filter = ({
           </form>
         </div>
 
-        <div className="flex flex-col gap-2 [&>*]:max-w-max">
+        <div className="flex flex gap-2 [&>*]:max-w-max">
           <button
             onClick={() => setLocation("paris")}
             className={`border border-blue-500 ${
               location === "paris"
                 ? "bg-blue-500 text-white"
                 : "bg-transparent text-blue-500"
-            } py-1 px-2 rounded-sm cursor-pointer flex items-center gap-2 `}
+            } py-1 px-2 rounded-sm cursor-pointer flex items-center gap-2 text-sm`}
           >
             Paris
           </button>
@@ -98,7 +98,7 @@ const Filter = ({
               location === "london"
                 ? "bg-blue-500 text-white"
                 : "bg-transparent text-blue-500"
-            } py-1 px-2 rounded-sm cursor-pointer flex items-center gap-2`}
+            } py-1 px-2 rounded-sm cursor-pointer flex items-center gap-2 text-sm`}
           >
             London
           </button>
@@ -108,7 +108,7 @@ const Filter = ({
               location === "new york"
                 ? "bg-blue-500 text-white"
                 : "bg-transparent text-blue-500"
-            } py-1 px-2 rounded-sm cursor-pointer flex items-center gap-2`}
+            } py-1 px-2 rounded-sm cursor-pointer flex items-center gap-2 text-sm`}
           >
             New York
           </button>
