@@ -10,6 +10,15 @@ const Filter = ({
   type,
   setType,
 }: any) => {
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const entries = Object.fromEntries(formData);
+
+    setLocation(entries.inputLocation);
+  };
+
   return (
     <div className="md:w-[25%]">
       <FilterApplied
@@ -22,16 +31,16 @@ const Filter = ({
       />
 
       {/* ===== TYPE ===== */}
-      <div className="border border-neutral-300 border-b-1 border-t-0 border-r-0 border-l-0 pb-5 mb-5">
-        <h2 className="text-neutral-500 font-bold mb-2 ">Type</h2>
+      <div className="border-b-1 mb-5 border border-l-0 border-r-0 border-t-0 border-neutral-300 pb-5">
+        <h2 className="mb-2 font-bold text-neutral-500 ">Type</h2>
 
         <div className="flex flex-wrap gap-2">
           <button
             onClick={() => setType(" ")}
-            className={`border border-blue-500 py-1 px-2 rounded-sm text-sm cursor-pointer flex items-center gap-2 ${
+            className={`flex cursor-pointer items-center gap-2 rounded-sm border border-blue-500 px-2 py-1 text-sm ${
               type === " "
                 ? "bg-blue-500 text-white"
-                : "text-blue-500 bg-transparent"
+                : "bg-transparent text-blue-500"
             }`}
           >
             Everything
@@ -39,10 +48,10 @@ const Filter = ({
 
           <button
             onClick={() => setType("full time")}
-            className={`border border-blue-500 py-1 px-2 text-sm rounded-sm cursor-pointer flex items-center gap-2 ${
+            className={`flex cursor-pointer items-center gap-2 rounded-sm border border-blue-500 px-2 py-1 text-sm ${
               type === "full time"
-                ? "text-white bg-blue-500"
-                : "text-blue-500 bg-transparent "
+                ? "bg-blue-500 text-white"
+                : "bg-transparent text-blue-500 "
             }`}
           >
             Full Time
@@ -50,10 +59,10 @@ const Filter = ({
 
           <button
             onClick={() => setType("part time")}
-            className={`border border-blue-500 py-1 px-2 text-sm rounded-sm cursor-pointer flex items-center gap-2 ${
+            className={`flex cursor-pointer items-center gap-2 rounded-sm border border-blue-500 px-2 py-1 text-sm ${
               type === "part time"
-                ? "text-white bg-blue-500"
-                : "text-blue-500 bg-transparent"
+                ? "bg-blue-500 text-white"
+                : "bg-transparent text-blue-500"
             }`}
           >
             Part Time
@@ -62,56 +71,62 @@ const Filter = ({
       </div>
 
       {/* ===== LOCATION ===== */}
-      <div className="pb-5 ">
-        <h2 className="text-neutral-500 font-bold mb-2 ">Location</h2>
+      <div className=" pb-5">
+        <h2 className="mb-2 font-bold text-neutral-500">Location</h2>
 
-        <div className="mb-3 bg-white p-1 border border-gray-300">
-          <form action="" className="flex items-center gap-2">
-            <div className="flex items-center gap-2">
-              <BsGlobeAmericas className="text-neutral-400" />
-              <input
-                type="text"
-                className="w-full text-sm rounded-sm outline-none placeholder:text-neutral-400 text-neutral-700"
-                placeholder="City, state, zip code or country"
-              />
-            </div>
-            <button className="bg-blue-500 text-white text-sm rounded-sm p-1 px-2 hover:bg-blue-600">
-              Search
+        <div className="flex flex-wrap items-center gap-3">
+          <div className=" border border-gray-300 bg-white p-1">
+            <form onSubmit={handleSubmit} className="flex items-center gap-2">
+              <div className="flex flex-1 items-center gap-2 ">
+                <BsGlobeAmericas className="text-neutral-400" />
+                <input
+                  type="text"
+                  name="inputLocation"
+                  className="w-full rounded-sm text-sm text-neutral-700 outline-none placeholder:text-neutral-400"
+                  placeholder="City, state, zip code or country"
+                />
+              </div>
+              <button
+                type="submit"
+                className="rounded-sm bg-blue-500 p-1 px-2 text-sm text-white hover:bg-blue-600"
+              >
+                Search
+              </button>
+            </form>
+          </div>
+
+          <div className="flex flex gap-2 [&>*]:max-w-max">
+            <button
+              onClick={() => setLocation("paris")}
+              className={`border border-blue-500 ${
+                location === "paris"
+                  ? "bg-blue-500 text-white"
+                  : "bg-transparent text-blue-500"
+              } flex cursor-pointer items-center gap-2 rounded-sm px-2 py-1 text-sm`}
+            >
+              Paris
             </button>
-          </form>
-        </div>
-
-        <div className="flex flex gap-2 [&>*]:max-w-max">
-          <button
-            onClick={() => setLocation("paris")}
-            className={`border border-blue-500 ${
-              location === "paris"
-                ? "bg-blue-500 text-white"
-                : "bg-transparent text-blue-500"
-            } py-1 px-2 rounded-sm cursor-pointer flex items-center gap-2 text-sm`}
-          >
-            Paris
-          </button>
-          <button
-            onClick={() => setLocation("london")}
-            className={`border border-blue-500 ${
-              location === "london"
-                ? "bg-blue-500 text-white"
-                : "bg-transparent text-blue-500"
-            } py-1 px-2 rounded-sm cursor-pointer flex items-center gap-2 text-sm`}
-          >
-            London
-          </button>
-          <button
-            onClick={() => setLocation("new york")}
-            className={`border border-blue-500 ${
-              location === "new york"
-                ? "bg-blue-500 text-white"
-                : "bg-transparent text-blue-500"
-            } py-1 px-2 rounded-sm cursor-pointer flex items-center gap-2 text-sm`}
-          >
-            New York
-          </button>
+            <button
+              onClick={() => setLocation("london")}
+              className={`border border-blue-500 ${
+                location === "london"
+                  ? "bg-blue-500 text-white"
+                  : "bg-transparent text-blue-500"
+              } flex cursor-pointer items-center gap-2 rounded-sm px-2 py-1 text-sm`}
+            >
+              London
+            </button>
+            <button
+              onClick={() => setLocation("new york")}
+              className={`border border-blue-500 ${
+                location === "new york"
+                  ? "bg-blue-500 text-white"
+                  : "bg-transparent text-blue-500"
+              } flex cursor-pointer items-center gap-2 rounded-sm px-2 py-1 text-sm`}
+            >
+              New York
+            </button>
+          </div>
         </div>
       </div>
     </div>

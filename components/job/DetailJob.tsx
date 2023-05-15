@@ -8,9 +8,9 @@ const DetailJob = ({ job }: any) => {
       {/* --- TITLE --- */}
       <div className="mb-2 flex items-center gap-5">
         <h1 className="text-lg font-bold">{job.title}</h1>
-        {job.extensions[2] && (
+        {job.extensions[1] && (
           <p className="shrink-0 rounded-sm border border-blue-900 p-1 text-xs font-bold">
-            {job.extensions[2]}
+            {job.extensions[1]}
           </p>
         )}
       </div>

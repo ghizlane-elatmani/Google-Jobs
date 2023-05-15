@@ -4,6 +4,7 @@ import { Fragment } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Sidebar from "@/components/job/Sidebar";
 import DetailJob from "@/components/job/DetailJob";
+import Footer from "@/components/layout/Footer";
 
 export default function Job() {
   const router = useRouter();
@@ -16,6 +17,7 @@ export default function Job() {
         <Sidebar apply={job.via} />
         <DetailJob job={job} />
       </Layout>
+      <Footer />
     </Fragment>
   );
 }

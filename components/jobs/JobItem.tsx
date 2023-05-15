@@ -27,7 +27,7 @@ const JobItem = ({ job }: any) => {
 
           <div className="flex flex-col justify-between gap-1 sm:flex-row">
             {job.detected_extensions.schedule_type === "Full-time" ? (
-              <p className="rounded-sm border border-blue-900 p-1 text-xs font-bold ">
+              <p className="max-w-max rounded-sm border border-blue-900 p-1 text-xs font-bold">
                 Full time
               </p>
             ) : (
